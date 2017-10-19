@@ -1,0 +1,11 @@
+https://testbot.localtunnel.me/oauth
+2838483502.260232402247
+08a43955f4714ab8b97d0f48823d07c0
+H59IuwBhcRTQgGFcIzgyYmtL
+xoxb-260234871671-QgW8KwxVjlUpQfzwGra5gYDS
+
+lt --port 8766 --subdomain testbot
+CLIENT_ID=xoxp-2838483502-19239919266-258497144928-20c00dd498626aa486822fae7ff0448f PORT=8766 npm start
+TOKEN=xoxb-260234871671-QgW8KwxVjlUpQfzwGra5gYDS node index.js
+
+https://testbot.localtunnel.me/login

@@ -85,24 +85,20 @@ controller.on('bot_channel_join', function (bot, message) {
     bot.reply(message, "I'm here!")
 });
 
-controller.hears('hello', 'direct_message', function (bot, message) {
-    bot.reply(message, 'Hello!');
+controller.hears('PR(\d*)', 'direct_message, direct_mention, mention, ambient', function (bot, message) {
+	var myRegexp = /PR(\d*)/gi;
+	var matches = getMatches(message.text, myRegexp, 1);
+	for(var i = 0; i < matches.length; i++){
+		bot.reply(message, 'http://test/' + matches[i]);
+	}
 });
 
-
-/**
- * AN example of what could be:
- * Any un-handled direct mention gets a reaction and a pat response!
- */
-//controller.on('direct_message,mention,direct_mention', function (bot, message) {
-//    bot.api.reactions.add({
-//        timestamp: message.ts,
-//        channel: message.channel,
-//        name: 'robot_face',
-//    }, function (err) {
-//        if (err) {
-//            console.log(err)
-//        }
-//        bot.reply(message, 'I heard you loud and clear boss.');
-//    });
-//});
+function getMatches(string, regex, index) {
+  index || (index = 1); // default to the first capturing group
+  var matches = [];
+  var match;
+  while (match = regex.exec(string)) {
+    matches.push(match[index]);
+  }
+  return matches;
+}
